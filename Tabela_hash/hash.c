@@ -192,34 +192,63 @@ int main() {
     inicializarTabela(tabela);
 
     do {
-        printf("\n\t0 - Sair\n\t1 - Inserir\n\t2 - Buscar\n\t3 - Imprimir\n");
+        printf("\n\n====================================\n");
+        printf("        Sistema de Cadastro         \n");
+        printf("====================================\n");
+        printf("  0 - Sair\n");
+        printf("  1 - Inserir Novo Registro\n");
+        printf("  2 - Buscar por CPF\n");
+        printf("  3 - Imprimir Registros\n");
+        printf("====================================\n");
+        printf("Digite sua opcao: ");
         scanf("%d", &opc);
         getchar(); // Limpa o ENTER depois de scanf!
 
         switch (opc) {
         case 1:
-            inserirSequencial(tabela); // Alterado para a nova função
+            printf("\n====================================\n");
+            printf("     Inserir Novo Registro         \n");
+            printf("====================================\n");
+            printf("Preencha as informacoes solicitadas:\n\n");
+            inserirSequencial(tabela);
+            printf("\n------------------------------------\n");
+            printf("Registro inserido com sucesso!\n");
+            printf("------------------------------------\n");
             break;
         case 2:
-            printf("\tQual cpf deseja buscar? ");
+            printf("\n====================================\n");
+            printf("         Buscar por CPF            \n");
+            printf("====================================\n");
+            printf("Qual CPF deseja buscar? ");
             scanf("%d", &valor);
             getchar();
-            buscar = buscaSequencial(tabela, valor); // Alterado para a nova função
+            buscar = buscaSequencial(tabela, valor);
             if (buscar) {
-                printf("\tCpf encontrado: %d\n", buscar->cpf);
+                printf("\n------------------------------------\n");
+                printf("CPF encontrado:\n");
                 imprimirPessoa(*buscar);
+                printf("------------------------------------\n");
             } else {
-                printf("\tCpf nao encontrado!\n");
+                printf("\n------------------------------------\n");
+                printf("CPF nao encontrado!\n");
+                printf("------------------------------------\n");
             }
             break;
         case 3:
+            printf("\n====================================\n");
+            printf("     Lista de Registros            \n");
+            printf("====================================\n");
             imprimir(tabela);
             break;
         case 0:
-            printf("Encerrando programa...\n");
+            printf("\n====================================\n");
+            printf("     Encerrando Programa...        \n");
+            printf("====================================\n");
             break;
         default:
-            printf("Opcao Invalida!\n");
+            printf("\n------------------------------------\n");
+            printf("Opcao Invalida! Tente novamente.\n");
+            printf("------------------------------------\n");
             break;
         }
     } while (opc != 0);
